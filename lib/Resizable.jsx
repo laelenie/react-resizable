@@ -160,7 +160,11 @@ export default class Resizable extends React.Component {
 
     };
   }
-
+  getAdditionalHandle():{
+    if(this.props.additionalHandle){
+      return <span className="react-resizable-handle react-resizable-handle-left" />;
+    }
+  }
   render(): React.Element {
     let {width, height, ...p} = this.props;
     let className = p.className ?
@@ -183,6 +187,9 @@ export default class Resizable extends React.Component {
           onStart={this.resizeHandler('onResizeStart')}
           onDrag={this.resizeHandler('onResize')}
           >
+          {this.getAdditionalHandle()}
+
+
           <span className="react-resizable-handle" />
         </DraggableCore>
       ]
